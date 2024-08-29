@@ -1,0 +1,11 @@
+#ramp.py file
+from bs4 import BeautifulSoup
+
+with open("ramp.html") as fp:
+    soup = BeautifulSoup(fp, "html.parser")
+    soup.find_all("i", class_="ramp char")
+    str=''
+    for codeTag in soup.find_all("code", class_="ramp"):
+        if codeTag.div.span.i!=None:
+            str=str+codeTag.div.span.i["value"]
+    print(str)
